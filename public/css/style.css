@@ -1,0 +1,17 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#messagesContainer {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.chat-message:nth-child(even) {
+    background-color: rgba(235, 231, 231, 0.35)
+}
