@@ -1,0 +1,19 @@
+image: node:8
+stages:
+    - build
+    - deploy
+
+build:
+    stage: build
+    script:
+        - npm install
+    artifacts:
+        paths:
+            - node_modules
+
+deploy:
+   stage: deploy
+   script:
+     - git remote add heroku https://heroku:a46396fd-983f-4ca7-b74d-148c6136ac76@git.heroku.com/node-talal.git
+     - git push heroku master
+     - echo "Deployed to heroku server"
