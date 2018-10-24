@@ -1,19 +1,18 @@
 image: node:8
 stages:
-    - build
-    - deploy
+    - production
 
-build:
-    stage: build
-    script:
-        - npm install
-    artifacts:
-        paths:
-            - node_modules
-
-deploy:
-   stage: deploy
-   script:
-     - git remote add heroku https://heroku:a46396fd-983f-4ca7-b74d-148c6136ac76@git.heroku.com/node-talal.git
-     - git push heroku master
-     - echo "Deployed to heroku server"
+production:
+  type: deploy
+  stage: production
+  image: ruby:latest
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    # The provider option specifies the provider that we want to deploy
+    # The app option sets the Heroku app name
+    # api-key option sets the Heroku API key
+    - dpl --provider=heroku --app=node-talal --api-key=$HEROKU_API_KEY
+  only:
+    - master
