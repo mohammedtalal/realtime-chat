@@ -12,7 +12,7 @@ production:
     - gem install dpl
     # The provider option specifies the provider that we want to deploy
     # The app option sets the Heroku app name
-    # api-key option sets the Heroku API key
+    # api-key option sets the Heroku API KEY
     - dpl --provider=heroku --app=node-talal --api-key=$HEROKU_API_KEY
   only:
     - master
